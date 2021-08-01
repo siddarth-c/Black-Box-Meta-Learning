@@ -1,0 +1,10 @@
+{
+    "k_shot" : 1,
+    "n_way" : 5,
+    "batch_size" : 128,
+    "size" : 32,
+    "epochs" : 2,
+    "train_parent_folder" : "omniglot\\images_background\\*",
+    "test_parent_folder" : "omniglot\\images_evaluation\\*" 
+}
+
