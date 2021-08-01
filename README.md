@@ -22,7 +22,7 @@ This repository contains:
 The [Omniglot data](https://github.com/brendenlake/omniglot) set is designed for developing more human-like learning algorithms. It contains 1623 different handwritten characters from 50 different alphabets. Each of the 1623 characters was drawn online via Amazon's Mechanical Turk by 20 different people. The Omniglot data set contains 50 alphabets. It is split into a background set of 30 alphabets and an evaluation set of 20 alphabets.
 
 ### Model
-A stacked 2 layered-LSTM model is employed. The model takes in the flattened train image and their corresponding target labels as the input to predict the labels of the test images. More information on the training procedure could be found in [HW1 of CS330](https://github.com/siddarth-c/Black-Box-Meta-Learning/blob/main/CS330_HW1.pdf). 
+A stacked 2 layered-LSTM model is employed. The model takes in the flattened train image and their corresponding target labels as the input to predict the labels of the test images. More information on the training procedure could be found in [HW1 of CS330](https://github.com/siddarth-c/Black-Box-Meta-Learning/blob/main/CS330_HW1.pdf). The hyper-parameters can be changed in the [config file](config.json).
 
 ## To Run
 
