@@ -23,6 +23,7 @@ The [Omniglot data](https://github.com/brendenlake/omniglot) set is designed for
 
 ### Model
 A stacked 2 layered-LSTM model is employed. The model takes in the flattened train image and their corresponding target labels as the input to predict the labels of the test images. More information on the training procedure could be found in [HW1 of CS330](https://github.com/siddarth-c/Black-Box-Meta-Learning/blob/main/CS330_HW1.pdf). The hyper-parameters can be changed in the [config file](config.json).
+![demo](architecture.png)
 
 ## To Run
 
