@@ -38,10 +38,19 @@ omniglot
 │___  images_evaluation    
 
 ```
+Install the following libraries to run the code
+```
+torch
+numpy
+glob
+PIL
+matplotlib
+```
 Run BlackBox.py 
 ```
 python3 BlackBox.py
 ```
+
 
 ## References
 1. This work is inspired by Stanford's [CS 330: Deep Multi-Task and Meta Learning](http://cs330.stanford.edu/)
