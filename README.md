@@ -24,10 +24,14 @@ The [Omniglot data](https://github.com/brendenlake/omniglot) set is designed for
 ### Model
 A stacked 2 layered-LSTM model is employed. The inputs from the support set are concatenated with their true lables one-hot encoded. Where as the inputs from the query set are concatenated with all zeroes. The model is expected to predict the true labels of the query set. <br>
 ![demo](architecture.png) <br>
-<br> More information on the training procedure could be found in [HW1 of CS330](https://github.com/siddarth-c/Black-Box-Meta-Learning/blob/main/CS330_HW1.pdf). The hyper-parameters can be changed in the [config file](config.json).
+<br> More information on the training procedure could be found in [HW1 of CS330](https://github.com/siddarth-c/Black-Box-Meta-Learning/blob/main/CS330_HW1.pdf). The hyper-parameters can be changed in the [config file](config.json). <br>
+
+##### Update 1 (05-08-2021) : Included support for Bidirectional-LSTM. Change 'bi_dir' to "true" in the config file to enable BiLSTM.
+
 ## To Run
 
 Download the omniglot data [here](https://www.kaggle.com/watesoyan/omniglot/download) and save the downloaded folders in a folder titled 'omniglot'. Save the [python code](BlackBox.py) and [config file](config.json) in the same directory of 'omniglot'.
+
 
 ```
 
