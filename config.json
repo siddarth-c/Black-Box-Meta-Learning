@@ -1,9 +1,10 @@
 {
+    "bi_dir" : false,
     "k_shot" : 1,
     "n_way" : 5,
     "batch_size" : 128,
-    "size" : 28,
-    "epochs" : 25000,
+    "img_size" : 32,
+    "epochs" : 8000,
     "train_parent_folder" : "omniglot\\images_background\\*",
     "test_parent_folder" : "omniglot\\images_evaluation\\*" 
 }

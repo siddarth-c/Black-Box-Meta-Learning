@@ -25,12 +25,13 @@ with open("config.json") as json_data_file:
 k_shot = data["k_shot"]
 n_way = data["n_way"]
 batch_size = data["batch_size"]
-size = data["size"]
+size = data["img_size"]
 epochs = data["epochs"]
 train_parent_folder = data["train_parent_folder"]
 test_test_folder = data["test_parent_folder"]
+bi_dir = data["bi_dir"]
 
-print('A', k_shot, 'shot', n_way, 'Way classification')
+print('A', k_shot, 'Shot', n_way, 'Way classification')
 
 def get_all_paths(why = 'train'):
     """
@@ -58,7 +59,7 @@ def get_image_path_label(all_paths):
         A list of (k+1 * n) images' path 
     """
     n_folders_int  = random.sample(range(0, len(all_paths)), n_way)
-    image_labels = [[(glob.glob(all_paths[n] + '\*')[k], n) 
+    image_labels = [[(glob.glob(all_paths[n] + '\*')[k], n) # (path, label)
                     for n in n_folders_int
                     for k in random.sample(range(0, len(glob.glob(all_paths[n] + '\*'))), k_shot+1)
                     ] for b in range(batch_size)] 
@@ -114,13 +115,16 @@ def batch_data(why = 'train'):
 class Omniglot_MANN(nn.Module):
     def __init__(self, k_shot, n_way, batch_size, img_size):
         super(Omniglot_MANN, self).__init__()
+        global bi_dir
+        n = 1
+        if bi_dir:
+            n = 2
         self.k_shot = k_shot
         self.n_way = n_way
         self.batch_size = batch_size
         self.img_size = img_size
-
-        self.lstm1 = nn.LSTM(img_size + n_way, 128, batch_first = True)
-        self.lstm2 = nn.LSTM(128, n_way, batch_first = True)
+        self.lstm1 = nn.LSTM(img_size + n_way, 128, batch_first = True, bidirectional = bi_dir)
+        self.lstm2 = nn.LSTM(128*n, n_way, batch_first = True)
 
     def forward(self, x):
         x1,_ = self.lstm1(x)
@@ -151,7 +155,7 @@ criterion = nn.CrossEntropyLoss()
 all_train_paths = get_all_paths('train')
 all_test_paths = get_all_paths('test')
 
-all_accuracy = []
+all_loss = []
 
 print('Starting training...')
 for e in range(epochs):
@@ -170,11 +174,14 @@ for e in range(epochs):
         pred = model(X)
         val_loss = criterion(pred, Y.long())
         accuracy = ((get_acc(pred, Y))/(batch_size * n_way))*100
-        all_accuracy.append(accuracy)
+        all_loss.append(val_loss.item())
 
         print('Epoch:', e + 1, '; Loss:', val_loss.item(), '; Acc:', accuracy)
 
 print('Completed Training!')
-# To save the training accuracy curve
-plt.plot(all_accuracy)
-plt.savefig('Acc_curve.png')
+# To save the training loss curve
+plt.plot(all_loss)
+plt.title( str(k_shot) + ' shot ' +  str(n_way) + ' way -  ' + ' Test performance')
+plt.xlabel('Epochs')
+plt.ylabel('Test Loss')
+plt.savefig('loss_curve.png')
