@@ -59,5 +59,5 @@ python3 BlackBox.py
 ## References
 1. This work is inspired by Stanford's [CS 330: Deep Multi-Task and Meta Learning](http://cs330.stanford.edu/)
 2. A similar implementation could be found [here](https://github.com/Luvata/CS330-Stanford-Deep-Multi-Task-and-Meta-Learning/tree/master/HW1)
-3. A [blog](https://research.aimultiple.com/few-shot-learning/) on Few shot learning
+3. An awesome [blog](https://lilianweng.github.io/lil-log/2018/11/30/meta-learning.html) on Meta-Learning
 4. Stanford's lecture series on CS 330: Deep Multi-Task and Meta Learning in [YouTube](https://www.youtube.com/playlist?list=PLoROMvodv4rMC6zfYmnD7UG3LVvwaITY5)
